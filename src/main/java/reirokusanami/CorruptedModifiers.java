@@ -2,12 +2,10 @@ package reirokusanami;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -29,7 +27,7 @@ public class CorruptedModifiers {
     public static final String DEPENDENCIES =
             "required-after:mantle;" +
             "required-after:tconstruct@[1.12.2-2.12.0.135,);" +
-            "required-after:forge@[14.23.5.2837,);";
+            "required-after:forge@[14.23.5.2836,);";
     public static Logger logger;
 
     @Instance(CorruptedModifiers.MODID)
@@ -42,7 +40,7 @@ public class CorruptedModifiers {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        logger.info("Initialization [CorruptedModifier]");
+        logger.info("Initialization [CorruptedModifiers]");
     }
 
     @SubscribeEvent
