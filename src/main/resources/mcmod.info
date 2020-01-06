@@ -1,0 +1,16 @@
+[
+{
+  "modid": "vaultmod",
+  "name": "CorruptedModifiers",
+  "description": "Allows you to attach powerful, but cursed Modifiers to your TiC weapon. How do you treat the cursed power ...?",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ReiRokusanami"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
