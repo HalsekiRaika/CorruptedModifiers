@@ -13,7 +13,7 @@ public class ModDoubleEdges extends ToolModifier {
     public ModDoubleEdges(int max){
         super("doubleedges", 0xf5001a);
         this.max = max;
-        addAspects(new ModifierAspect.MultiAspect(this, 5, max, 1));
+        addAspects(new ModifierAspect.DataAspect(this), new ModifierAspect.MultiAspect(this, 5, max, 1));
     }
 
     @Override
@@ -25,25 +25,27 @@ public class ModDoubleEdges extends ToolModifier {
         int durability = toolData.durability;
         int level = data.current / max;
         for (int count = data.current; count > 0; count--){
-            if(attack <= 50f) {
+            if(attack <= 5f) {
+                durability -= 50;
                 attack += 0.5f - 0.25f * attack / 10f;
-                durability -= 5;
-            } else if (attack <= 80f) {
+            } else if (attack <= 2f) {
+                durability -= 30;
                 attack += 0.25f - 0.1 * attack / 20f;
-                durability -= 3;
             } else {
+                durability -= 20;
                 attack += 0.15;
-                durability -= 2;
             }
         }
 
         attack += level * 0.25f;
 
         NBTTagCompound tag = TagUtil.getToolTag(rootTag);
-        attack -= toolData.attack;
+        attack -= toolDataOrigin.attack;
         attack += tag.getFloat(Tags.ATTACK);
+        durability -= toolData.durability;
+        durability += tag.getInteger(Tags.DURABILITY);
+        tag.setInteger(Tags.DURABILITY, durability);
         tag.setFloat(Tags.ATTACK, attack);
-        TagUtil.setToolTag(rootTag, toolData.get());
     }
 
     @Override

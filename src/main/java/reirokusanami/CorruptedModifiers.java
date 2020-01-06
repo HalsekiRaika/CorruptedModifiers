@@ -2,10 +2,12 @@ package reirokusanami;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -43,6 +45,11 @@ public class CorruptedModifiers {
         logger.info("Initialization [CorruptedModifiers]");
     }
 
+    @EventHandler
+    public void construct(FMLConstructionEvent event){
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
     @SubscribeEvent
     public void register(RegistryEvent.Register<Item> event) {
         VaultMiscItems.InitializationMiscItems(event.getRegistry());
@@ -53,7 +60,7 @@ public class CorruptedModifiers {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
-        VaultItemRegister.getItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
         VaultMiscItemRegister.getVaultItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
+        VaultItemRegister.getItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
     }
 }

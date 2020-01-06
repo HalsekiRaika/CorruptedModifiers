@@ -1,0 +1,5 @@
+item.crystalcluster.name=CrystalCluster
+item.glasswhetstone.name=GlassWhetStone
+
+# -- Modifier
+modifier.doubleedges.name=DoubleEdges

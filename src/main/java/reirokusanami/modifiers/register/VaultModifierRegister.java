@@ -9,7 +9,7 @@ public class VaultModifierRegister {
     public static Modifier modDoubleEdges;
 
     public static void setupModifier() {
-        modDoubleEdges = new ModDoubleEdges(1);
+        modDoubleEdges = new ModDoubleEdges(75);
         modDoubleEdges.addItem(itemGlassWhetStone);
     }
 }
