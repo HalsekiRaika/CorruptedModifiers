@@ -44,8 +44,13 @@ public class ModDoubleEdges extends ToolModifier {
         attack += tag.getFloat(Tags.ATTACK);
         durability -= toolData.durability;
         durability += tag.getInteger(Tags.DURABILITY);
-        tag.setInteger(Tags.DURABILITY, durability);
-        tag.setFloat(Tags.ATTACK, attack);
+        if (!(durability <= 1)){
+            tag.setInteger(Tags.DURABILITY, durability);
+            tag.setFloat(Tags.ATTACK, attack);
+        } else {
+            tag.setInteger(Tags.DURABILITY, 1);
+            tag.setFloat(Tags.ATTACK, attack);
+        }
     }
 
     @Override

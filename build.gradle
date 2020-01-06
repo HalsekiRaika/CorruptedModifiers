@@ -21,9 +21,9 @@ repositories {
     }
 }
 
-version = "1.0"
+version = "0.1.0"
 group = "reirokusanami.vaultmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "vaultmod"
+archivesBaseName = "CorruptedModifiers"
 
 sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 compileJava {
