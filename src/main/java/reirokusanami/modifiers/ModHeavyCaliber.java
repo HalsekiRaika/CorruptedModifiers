@@ -3,51 +3,53 @@ package reirokusanami.modifiers;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
+import slimeknights.tconstruct.library.tools.ProjectileNBT;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.Tags;
 import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 
-public class ModDoubleEdges extends ToolModifier {
+public class ModHeavyCaliber extends ToolModifier {
     private final int max;
-    public ModDoubleEdges(int max){
-        super("doubleedges", 0xf5001a);
+    public ModHeavyCaliber(int max) {
+        super("heavycaliber", 0xc78000);
         this.max = max;
-        addAspects(new ModifierAspect.DataAspect(this), new ModifierAspect.MultiAspect(this, 5, max, 1));
+        addAspects(new ModifierAspect.MultiAspect(this, 10, max, 1));
     }
 
     @Override
     public void applyEffect(NBTTagCompound rootTag, NBTTagCompound modifierTag) {
         ModifierNBT.IntegerNBT data = ModifierNBT.readInteger(modifierTag);
         ToolNBT toolDataOrigin = TagUtil.getOriginalToolStats(rootTag);
-        ToolNBT toolData = TagUtil.getToolStats(rootTag);
+        ProjectileNBT DataOrigin = new ProjectileNBT(TagUtil.getToolTag(rootTag));
+        float accuracy = DataOrigin.accuracy;
         float attack = toolDataOrigin.attack;
-        int durability = toolData.durability;
         int level = data.current / max;
-        for (int count = data.current; count > 0; count--){
-            if(attack <= 5f) {
-                durability -= 50;
-                attack += 0.5f - 0.25f * attack / 10f;
+        for (int count = data.current; count > 0; count--) {
+            if (attack <= 3f) {
+                accuracy -= 0.017f;
+                attack += 0.50f - 0.20f * attack / 10f;
             } else if (attack <= 2f) {
-                durability -= 30;
-                attack += 0.25f - 0.1 * attack / 20f;
+                accuracy -= 0.016f;
+                attack += 0.30f - 0.2f * attack / 20f;
             } else {
-                durability -= 20;
-                attack += 0.15;
+                accuracy -= 0.014f;
+                attack += 0.20f;
             }
         }
 
         attack += level * 0.25f;
+        //accuracy -= accuracy - (level * 0.02);
 
         NBTTagCompound tag = TagUtil.getToolTag(rootTag);
         attack -= toolDataOrigin.attack;
         attack += tag.getFloat(Tags.ATTACK);
-        durability -= toolData.durability;
-        durability += tag.getInteger(Tags.DURABILITY);
-        if (!(durability <= 1)){
-            tag.setInteger(Tags.DURABILITY, durability);
+        accuracy -= DataOrigin.accuracy;
+        accuracy += tag.getFloat(Tags.ACCURACY);
+        if (!(accuracy <= 0.001f)){
+            tag.setFloat(Tags.ACCURACY, accuracy);
         } else {
-            tag.setInteger(Tags.DURABILITY, 1);
+            tag.setFloat(Tags.ACCURACY, 0.001f);
         }
         tag.setFloat(Tags.ATTACK, attack);
     }

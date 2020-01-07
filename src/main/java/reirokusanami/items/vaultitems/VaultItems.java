@@ -4,10 +4,12 @@ import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 import reirokusanami.items.register.VaultItemRegister;
 
-public class InitializationItems {
+public class VaultItems {
     public static Item itemGlassWhetStone;
+    public static Item itemBloodfeather;
 
-    public static void Init(IForgeRegistry<Item> event) {
+    public static void InitializationItems(IForgeRegistry<Item> event) {
         itemGlassWhetStone = VaultItemRegister.registerItem(new itemGlassWhetstone(), event);
+        itemBloodfeather = VaultItemRegister.registerItem(new itemBloodFeather(), event);
     }
 }

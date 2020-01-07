@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 import reirokusanami.items.VaultMiscItems;
 import reirokusanami.items.register.VaultItemRegister;
 import reirokusanami.items.register.VaultMiscItemRegister;
-import reirokusanami.items.vaultitems.InitializationItems;
+import reirokusanami.items.vaultitems.VaultItems;
 import reirokusanami.modifiers.register.VaultModifierRegister;
 import slimeknights.tconstruct.common.ModelRegisterUtil;
 
@@ -53,7 +53,7 @@ public class CorruptedModifiers {
     @SubscribeEvent
     public void register(RegistryEvent.Register<Item> event) {
         VaultMiscItems.InitializationMiscItems(event.getRegistry());
-        InitializationItems.Init(event.getRegistry());
+        VaultItems.InitializationItems(event.getRegistry());
         VaultModifierRegister.setupModifier();
     }
 

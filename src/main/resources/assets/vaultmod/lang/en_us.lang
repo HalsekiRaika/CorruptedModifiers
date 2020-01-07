@@ -1,5 +1,7 @@
 item.crystalcluster.name=CrystalCluster
 item.glasswhetstone.name=GlassWhetStone
+item.bloodfeather.name=BloodFeather
 
 # -- Modifier
 modifier.doubleedges.name=DoubleEdges
+modifier.heavycaliber.name=HeavyCaliber
