@@ -3,23 +3,22 @@ package reirokusanami.items.vaultitems;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import reirokusanami.CorruptedModifiers;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class itemGlassWhetstone extends Item {
-    private final String description =
-            "This whetstone is made of glass." + "\n" +
-            "Normally, the material is not sharpened, but it can be brittle and sharpened to cut everything." + "\n" +
-            "Who on earth made such a thing...?";
-    public itemGlassWhetstone() {
+public class itemClockworkGear extends Item {
+    private static final String description =
+            "It was like a gear used in fine watchmaking." + "\n" +
+            "But is this just a gear?" + "\n" +
+            "I feel strange and the sense of time is distorted...";
+
+    public itemClockworkGear() {
         super();
-        this.setUnlocalizedName("glasswhetstone");
-        this.setMaxStackSize(16);
+        this.setMaxStackSize(64);
+        this.setUnlocalizedName("clockworkgear");
     }
 
     @Override

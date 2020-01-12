@@ -46,10 +46,10 @@ public class ModHeavyCaliber extends ToolModifier {
         attack += tag.getFloat(Tags.ATTACK);
         accuracy -= DataOrigin.accuracy;
         accuracy += tag.getFloat(Tags.ACCURACY);
-        if (!(accuracy <= 0.001f)){
+        if (!(accuracy <= 0.30f)){
             tag.setFloat(Tags.ACCURACY, accuracy);
         } else {
-            tag.setFloat(Tags.ACCURACY, 0.001f);
+            tag.setFloat(Tags.ACCURACY, 0.30f);
         }
         tag.setFloat(Tags.ATTACK, attack);
     }
