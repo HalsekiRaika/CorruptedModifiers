@@ -8,6 +8,6 @@ public class VaultMiscItems {
     public static Item itemCrystalCluster;
 
     public static void InitializationMiscItems(IForgeRegistry<Item> event) {
-        itemCrystalCluster = VaultMiscItemRegister.RegisterItems("crystalcluster", 64, event);
+        //itemCrystalCluster = VaultMiscItemRegister.RegisterItems("crystalcluster", 64, event);
     }
 }

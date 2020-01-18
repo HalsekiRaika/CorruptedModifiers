@@ -52,7 +52,7 @@ public class CorruptedModifiers {
 
     @SubscribeEvent
     public void register(RegistryEvent.Register<Item> event) {
-        VaultMiscItems.InitializationMiscItems(event.getRegistry());
+        //VaultMiscItems.InitializationMiscItems(event.getRegistry());
         VaultItems.InitializationItems(event.getRegistry());
         VaultModifierRegister.setupModifier();
     }
@@ -60,7 +60,7 @@ public class CorruptedModifiers {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
-        VaultMiscItemRegister.getVaultItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
+        //VaultMiscItemRegister.getVaultItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
         VaultItemRegister.getItems().forEach(item -> ModelRegisterUtil.registerItemModel(item));
     }
 }
